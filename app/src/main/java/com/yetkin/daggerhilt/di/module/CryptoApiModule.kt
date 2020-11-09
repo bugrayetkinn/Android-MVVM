@@ -1,4 +1,4 @@
-package com.yetkin.daggerhilt.module
+package com.yetkin.daggerhilt.di.module
 
 import com.yetkin.daggerhilt.data.network.CryptoApi
 import com.yetkin.daggerhilt.util.AppInfo

@@ -1,7 +1,8 @@
-package com.yetkin.daggerhilt.module
+package com.yetkin.daggerhilt.di.module
 
+import com.yetkin.daggerhilt.data.local.CryptoDao
 import com.yetkin.daggerhilt.data.network.CryptoApi
-import com.yetkin.daggerhilt.repository.CryptoRepository
+import com.yetkin.daggerhilt.data.repository.CryptoRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,6 +21,6 @@ Mail : bugrayetkinn@gmail.com
 object CryptoRepositoryModule {
 
     @Provides
-    fun cryptoRepository(cryptoApi: CryptoApi): CryptoRepository =
-        CryptoRepository(cryptoApi)
+    fun cryptoRepository(cryptoDao: CryptoDao, cryptoApi: CryptoApi): CryptoRepository =
+        CryptoRepository(cryptoDao, cryptoApi)
 }

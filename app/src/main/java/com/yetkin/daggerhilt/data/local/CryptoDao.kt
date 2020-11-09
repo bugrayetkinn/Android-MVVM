@@ -22,4 +22,7 @@ interface CryptoDao {
 
     @Insert
     suspend fun insertAll(cryptoList: List<CryptoModel>)
+
+    @Query("DELETE FROM crypto")
+    suspend fun deleteAllCrypto()
 }

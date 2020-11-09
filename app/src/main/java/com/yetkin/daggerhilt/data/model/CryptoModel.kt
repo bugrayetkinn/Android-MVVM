@@ -3,7 +3,6 @@ package com.yetkin.daggerhilt.data.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
 /**
 
 Created by : Buğra Yetkin

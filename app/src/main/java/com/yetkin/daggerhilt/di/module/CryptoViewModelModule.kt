@@ -1,6 +1,6 @@
-package com.yetkin.daggerhilt.module
+package com.yetkin.daggerhilt.di.module
 
-import com.yetkin.daggerhilt.repository.CryptoRepository
+import com.yetkin.daggerhilt.data.repository.CryptoRepository
 import com.yetkin.daggerhilt.ui.viewmodel.CryptoViewModel
 import dagger.Module
 import dagger.Provides
