@@ -14,7 +14,7 @@ Mail : bugrayetkinn@gmail.com
  */
 interface ICryptoRepository {
 
-    suspend fun fetchAllCryptoFromApi(): Flow<Resource<List<CryptoModel>>>
+    fun fetchAllCryptoFromApi(): Flow<Resource<List<CryptoModel>>>
     fun fetchAllCryptoFromDb(): Flow<List<CryptoModel>>
     suspend fun deleteAllCryptoFromDb()
     suspend fun insertAll(cryptoList: List<CryptoModel>)

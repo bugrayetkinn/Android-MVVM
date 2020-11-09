@@ -1,7 +1,10 @@
 package com.yetkin.daggerhilt.ui.viewmodel
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import androidx.lifecycle.viewModelScope
 import com.yetkin.daggerhilt.data.model.CryptoModel
 import com.yetkin.daggerhilt.data.repository.CryptoRepository
 import com.yetkin.daggerhilt.util.Resource
@@ -35,14 +38,8 @@ class CryptoViewModel @ViewModelInject constructor(private val cryptoRepository:
     private fun fetchAllCryptoFromDb(): LiveData<List<CryptoModel>> =
         cryptoRepository.fetchAllCryptoFromDb().asLiveData()
 
-    private fun fetchAllCryptoFromApi(): LiveData<Resource<List<CryptoModel>>> {
-        var data: LiveData<Resource<List<CryptoModel>>> = MutableLiveData()
-        viewModelScope.launch {
-            data =
-                cryptoRepository.fetchAllCryptoFromApi().asLiveData()
-        }
-        return data
-    }
+    private fun fetchAllCryptoFromApi(): LiveData<Resource<List<CryptoModel>>> =
+        cryptoRepository.fetchAllCryptoFromApi().asLiveData(viewModelScope.coroutineContext)
 
     fun deleteAllCryptoFromDb() = viewModelScope.launch { cryptoRepository.deleteAllCryptoFromDb() }
 

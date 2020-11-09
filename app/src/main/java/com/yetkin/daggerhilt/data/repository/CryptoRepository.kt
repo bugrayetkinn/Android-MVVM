@@ -25,7 +25,7 @@ class CryptoRepository @Inject constructor(
     private val api: CryptoApi
 ) : ICryptoRepository {
 
-    override suspend fun fetchAllCryptoFromApi(): Flow<Resource<List<CryptoModel>>> = flow {
+    override fun fetchAllCryptoFromApi(): Flow<Resource<List<CryptoModel>>> = flow {
 
         try {
             emit(Resource.Loading())
