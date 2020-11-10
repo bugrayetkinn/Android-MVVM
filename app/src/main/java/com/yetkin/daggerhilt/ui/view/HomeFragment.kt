@@ -18,7 +18,6 @@ import kotlinx.coroutines.delay
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
-
     private val cryptoViewModel: CryptoViewModel by viewModels()
 
     private lateinit var cryptoAdapter: CryptoAdapter
@@ -26,11 +25,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        initializeRecycler()
         floatingActionButton.setOnClickListener {
             NavHostFragment.findNavController(this)
                 .navigate(R.id.action_homeFragment_to_detailFragment)
         }
-        initializeRecycler()
 
         /*cryptoViewModel.allCryptoFromDb.observe(this, {
         })*/

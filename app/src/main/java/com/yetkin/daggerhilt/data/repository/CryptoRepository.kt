@@ -38,7 +38,8 @@ class CryptoRepository @Inject constructor(
                 }
             }
         } catch (e: Exception) {
-            emit(Resource.Error(e.localizedMessage))
+            emit(Resource.Error(e.localizedMessage.toString()))
+            e.printStackTrace()
         }
     }
 
