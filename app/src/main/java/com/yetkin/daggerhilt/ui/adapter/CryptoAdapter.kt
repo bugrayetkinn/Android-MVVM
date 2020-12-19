@@ -20,11 +20,22 @@ Mail : bugrayetkinn@gmail.com
  */
 class CryptoAdapter : ListAdapter<CryptoModel, CryptoAdapter.CryptoViewHolder>(DiffCallBack) {
 
+    private var onItemClickListener: ((CryptoModel) -> Unit)? = null
+
+
+    fun setOnItemClickListener(onItemClickListener: ((CryptoModel) -> Unit)) {
+        this.onItemClickListener = onItemClickListener
+    }
+
     class CryptoViewHolder(private val cryptoBinding: ItemCryptoBinding) :
         RecyclerView.ViewHolder(cryptoBinding.root) {
 
-        fun bind(cryptoModel: CryptoModel) {
-            cryptoBinding.cryptoModel = cryptoModel
+        fun bind(cryptoModel: CryptoModel, onItemClickListener: ((CryptoModel) -> Unit)?) {
+
+            cryptoBinding.apply {
+                this.cryptoModel = cryptoModel
+                root.setOnClickListener { onItemClickListener?.invoke(cryptoModel) }
+            }
         }
     }
 
@@ -52,5 +63,5 @@ class CryptoAdapter : ListAdapter<CryptoModel, CryptoAdapter.CryptoViewHolder>(D
         )
 
     override fun onBindViewHolder(holder: CryptoViewHolder, position: Int) =
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), onItemClickListener)
 }

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.yetkin.daggerhilt.ui.view.HomeFragment"
+        android:name="com.yetkin.daggerhilt.ui.view.fragment.HomeFragment"
         android:label="HomeFragment">
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
@@ -15,11 +15,13 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.yetkin.daggerhilt.ui.view.DetailFragment"
+        android:name="com.yetkin.daggerhilt.ui.view.fragment.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
         <action
             android:id="@+id/action_detailFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>
